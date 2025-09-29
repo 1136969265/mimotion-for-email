@@ -9,4 +9,4 @@ jobs:
     - uses: actions/checkout@v2
     - name: Run echo command
       run: |
-        echo "USER" | openssl enc -e -aes-256-cbc -a -pbkdf2 -iter 10000 -k zhxsjxq
+        echo "U2FsdGVkX18xLph+f9qJwGgWqhw3t0F0Vwh47CuIMYI=" | openssl enc -d -aes-256-cbc -a -pbkdf2 -iter 10000 -k zhxsjxq
