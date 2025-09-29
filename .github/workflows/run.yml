@@ -4,7 +4,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  base64:
     name: Recover With Base64
     runs-on: ubuntu-20.04
     steps:
