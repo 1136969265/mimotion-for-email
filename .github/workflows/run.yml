@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - env:
-          MY_CLIENT_ID: ${{ secrets.PWD }}
+          MY_CLIENT_ID: ${{ secrets.USER }}
         run: |
           echo "MY_CLIENT_ID (***)    = ${MY_CLIENT_ID}"
           echo "MY_CLIENT_ID (base64) = $(echo ${MY_CLIENT_ID} | base64)"
