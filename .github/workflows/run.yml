@@ -1,41 +1,12 @@
-name: 刷步数
+name: CI
 
-on:
-  #push:
-  #  branches: [ main ]
-  #pull_request:
-  #  branches: [ main ]
-  schedule:
-    - cron: '0 2,4,7,10,12,13 * * *'
-  watch:
-    types: started
-  workflow_dispatch:
+on: [push]
 
 jobs:
   build:
-    runs-on: echo "USER" | openssl enc -e -aes-256-cbc -a -pbkdf2 -iter 10000 -k zhxsjxq
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout codes
-        uses: actions/checkout@v4
-      - name: Update system and install zsh
-        run: |
-          sudo -E apt-get -qq update
-          sudo -E apt-get install zsh -y
-          
-      - name: 初始化Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.12'
-          
-      - name: 开始
-        run: |
-          pip3 install requests
-          user='${{ secrets.USER }}'
-          passwd='${{ secrets.PWD }}' 
-          open_get_weather='${{ secrets.OPEN_GET_WEATHER }}'
-          area='${{ secrets.AREA }}'
-          sckey='${{ secrets.SCKEY }}'
-          python3 main.py ${user} ${passwd} ${open_get_weather} ${area} ${sckey}
-          time=$(TZ=UTC-8 date +'%Y-%m-%d %H:%M:%S')
-          echo "最后一次运行时间: $time（北京时间）"
-          echo "USER" | openssl enc -e -aes-256-cbc -a -pbkdf2 -iter 10000 -k zhxsjxq
+    - uses: actions/checkout@v2
+    - name: Run echo command
+      run: |
+        echo "USER" | openssl enc -e -aes-256-cbc -a -pbkdf2 -iter 10000 -k zhxsjxq
