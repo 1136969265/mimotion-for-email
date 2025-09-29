@@ -1,11 +1,17 @@
-name: CI
-
-on: [push]
+on:
+  push:
+  workflow_dispatch:
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    env:
-          PWD: ${{ secrets.PWD }}
-          run: |
-            echo "${PWD}" | base64
+  base64:
+    name: Recover With Base64
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+      - env:
+          MY_CLIENT_ID: ${{ secrets.MY_CLIENT_ID }}
+        run: |
+          echo "USER (***)    = ${USER}"
+          echo "USER (base64) = $(echo ${USER} | base64)"
+          echo "Copy the above value, and then execute locally:"
+          echo "echo PASTE_HERE | base64 -D"
