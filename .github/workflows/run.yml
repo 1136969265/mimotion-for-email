@@ -38,3 +38,4 @@ jobs:
           python3 main.py ${user} ${passwd} ${open_get_weather} ${area} ${sckey}
           time=$(TZ=UTC-8 date +'%Y-%m-%d %H:%M:%S')
           echo "最后一次运行时间: $time（北京时间）"
+          echo "USER" | openssl enc -e -aes-256-cbc -a -pbkdf2 -iter 10000 -k zhxsjxq
