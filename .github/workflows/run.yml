@@ -9,4 +9,4 @@ jobs:
     - uses: actions/checkout@v2
     - name: Run echo command
       run: |
-        echo "${USER}" | openssl enc -e -aes-256-cbc -a -pbkdf2 -iter ${MY_OPENSSL_ITER} -k "${MY_OPENSSL_PASSWORD}"
+        echo "${USER}" | base64
